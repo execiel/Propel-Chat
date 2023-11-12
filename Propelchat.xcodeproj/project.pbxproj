@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B31299592B01211600D66906 /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31299582B01211600D66906 /* GreetingView.swift */; };
+		B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B312995A2B012A8C00D66906 /* GradientButton.swift */; };
 		B35E27B72AFFD79A00E964A0 /* PropelchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */; };
 		B35E27B92AFFD79A00E964A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27B82AFFD79A00E964A0 /* ContentView.swift */; };
 		B35E27BB2AFFD79B00E964A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35E27BA2AFFD79B00E964A0 /* Assets.xcassets */; };
@@ -16,6 +18,7 @@
 		B35E27D42AFFD79B00E964A0 /* PropelchatUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27D32AFFD79B00E964A0 /* PropelchatUITestsLaunchTests.swift */; };
 		B35E27E12AFFD9C500E964A0 /* SplashScreenView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27E02AFFD9C500E964A0 /* SplashScreenView.swift */; };
 		B35E27E32AFFDB2C00E964A0 /* Colorscheme.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27E22AFFDB2C00E964A0 /* Colorscheme.swift */; };
+		B36DD6962B01310800B96F5A /* RegisterView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B36DD6952B01310800B96F5A /* RegisterView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -36,6 +39,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B31299582B01211600D66906 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
+		B312995A2B012A8C00D66906 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		B35E27B32AFFD79A00E964A0 /* Propelchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Propelchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropelchatApp.swift; sourceTree = "<group>"; };
 		B35E27B82AFFD79A00E964A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -48,6 +53,7 @@
 		B35E27D32AFFD79B00E964A0 /* PropelchatUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropelchatUITestsLaunchTests.swift; sourceTree = "<group>"; };
 		B35E27E02AFFD9C500E964A0 /* SplashScreenView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SplashScreenView.swift; sourceTree = "<group>"; };
 		B35E27E22AFFDB2C00E964A0 /* Colorscheme.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Colorscheme.swift; sourceTree = "<group>"; };
+		B36DD6952B01310800B96F5A /* RegisterView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -100,6 +106,9 @@
 			children = (
 				B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */,
 				B35E27B82AFFD79A00E964A0 /* ContentView.swift */,
+				B31299582B01211600D66906 /* GreetingView.swift */,
+				B36DD6952B01310800B96F5A /* RegisterView.swift */,
+				B312995A2B012A8C00D66906 /* GradientButton.swift */,
 				B35E27E22AFFDB2C00E964A0 /* Colorscheme.swift */,
 				B35E27E02AFFD9C500E964A0 /* SplashScreenView.swift */,
 				B35E27BA2AFFD79B00E964A0 /* Assets.xcassets */,
@@ -264,8 +273,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				B35E27E32AFFDB2C00E964A0 /* Colorscheme.swift in Sources */,
+				B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */,
 				B35E27B92AFFD79A00E964A0 /* ContentView.swift in Sources */,
+				B36DD6962B01310800B96F5A /* RegisterView.swift in Sources */,
 				B35E27B72AFFD79A00E964A0 /* PropelchatApp.swift in Sources */,
+				B31299592B01211600D66906 /* GreetingView.swift in Sources */,
 				B35E27E12AFFD9C500E964A0 /* SplashScreenView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

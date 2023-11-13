@@ -11,6 +11,10 @@ import SwiftUI
 struct RegisterView: View {
     @State private var username: String = ""
     @State private var password: String = ""
+    @State private var error: String = ""
+    @EnvironmentObject var tokenManager: TokenManager;
+    
+    let loginManager = LoginManager()
     
     var body: some View {
         VStack{
@@ -23,9 +27,17 @@ struct RegisterView: View {
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .autocapitalization(.none)
+            Text(error)
+                .foregroundColor(Colorscheme.hl_error)
+                .font(.footnote)
             Button(action: {
                 print("Button pressed with name \(username), password \(password)")
-                sendRegisterRequest(username, password)
+                loginManager.sendRegisterRequest(
+                    username: username,
+                    password: password,
+                    errorText: $error,
+                    tokenManager: tokenManager
+                )
             }, label: {
                 GradientButton(text: "Register")
             })
@@ -37,37 +49,3 @@ struct RegisterView: View {
 }
 
 
-func sendRegisterRequest(_ username: String, _ password: String) {
-    guard let url = URL(string: "http://localhost:3000/api/registerUser") else {
-        print("Invalid URL")
-        return
-    }
-
-    // Create your model and encode it to JSON data
-    let registerData = RegisterData(name: username, password: password)
-    guard let jsonData = try? JSONEncoder().encode(registerData) else {
-        print("Error encoding JSON data")
-        return
-    }
-
-    var request = URLRequest(url: url)
-    request.httpMethod = "POST"
-    request.setValue("application/json", forHTTPHeaderField: "Content-Type")
-    request.httpBody = jsonData
-
-    URLSession.shared.dataTask(with: request) { (data, response, error) in
-        if let error = error {
-            print("Error: \(error)")
-        } else if let httpResponse = response as? HTTPURLResponse {
-            DispatchQueue.main.async {
-                print(httpResponse)
-                print("Printed http response")
-            }
-        }
-    }.resume()
-}
-
-struct RegisterData: Codable {
-    let name: String
-    let password: String
-}

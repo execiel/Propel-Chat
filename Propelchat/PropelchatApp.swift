@@ -26,7 +26,7 @@ struct PropelchatApp: App {
                         }
                     }
             } else {
-                ContentView()
+                ContentView().environmentObject(TokenManager())
             }
         }
     }

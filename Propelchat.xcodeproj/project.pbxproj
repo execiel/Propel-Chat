@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		B30EB4812B03A190005C9289 /* ConversationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30EB4802B03A190005C9289 /* ConversationManager.swift */; };
+		B30EB4832B03A596005C9289 /* ApiUtil.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30EB4822B03A596005C9289 /* ApiUtil.swift */; };
 		B31299592B01211600D66906 /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31299582B01211600D66906 /* GreetingView.swift */; };
 		B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B312995A2B012A8C00D66906 /* GradientButton.swift */; };
 		B35E27B72AFFD79A00E964A0 /* PropelchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */; };
@@ -23,6 +25,8 @@
 		B3B850282B025BDD0094B65D /* TokenManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B850272B025BDD0094B65D /* TokenManager.swift */; };
 		B3B8502A2B02658D0094B65D /* ConversationView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B850292B02658D0094B65D /* ConversationView.swift */; };
 		B3B8502C2B0265970094B65D /* HomeView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8502B2B0265970094B65D /* HomeView.swift */; };
+		B3B8502E2B02996B0094B65D /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8502D2B02996B0094B65D /* LoginView.swift */; };
+		B3B850302B02AA3C0094B65D /* SearchView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B3B8502F2B02AA3C0094B65D /* SearchView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -43,6 +47,8 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		B30EB4802B03A190005C9289 /* ConversationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationManager.swift; sourceTree = "<group>"; };
+		B30EB4822B03A596005C9289 /* ApiUtil.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ApiUtil.swift; sourceTree = "<group>"; };
 		B31299582B01211600D66906 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		B312995A2B012A8C00D66906 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
 		B35E27B32AFFD79A00E964A0 /* Propelchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Propelchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,6 +68,8 @@
 		B3B850272B025BDD0094B65D /* TokenManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TokenManager.swift; sourceTree = "<group>"; };
 		B3B850292B02658D0094B65D /* ConversationView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationView.swift; sourceTree = "<group>"; };
 		B3B8502B2B0265970094B65D /* HomeView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HomeView.swift; sourceTree = "<group>"; };
+		B3B8502D2B02996B0094B65D /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		B3B8502F2B02AA3C0094B65D /* SearchView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -112,14 +120,16 @@
 		B35E27B52AFFD79A00E964A0 /* Propelchat */ = {
 			isa = PBXGroup;
 			children = (
+				B3B850312B02AAB10094B65D /* Components */,
 				B3B850242B0256420094B65D /* Util */,
 				B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */,
 				B35E27B82AFFD79A00E964A0 /* ContentView.swift */,
+				B3B8502F2B02AA3C0094B65D /* SearchView.swift */,
 				B3B850292B02658D0094B65D /* ConversationView.swift */,
 				B3B8502B2B0265970094B65D /* HomeView.swift */,
 				B31299582B01211600D66906 /* GreetingView.swift */,
 				B36DD6952B01310800B96F5A /* RegisterView.swift */,
-				B312995A2B012A8C00D66906 /* GradientButton.swift */,
+				B3B8502D2B02996B0094B65D /* LoginView.swift */,
 				B35E27E22AFFDB2C00E964A0 /* Colorscheme.swift */,
 				B35E27E02AFFD9C500E964A0 /* SplashScreenView.swift */,
 				B35E27BA2AFFD79B00E964A0 /* Assets.xcassets */,
@@ -158,8 +168,18 @@
 			children = (
 				B3B850252B0256630094B65D /* LoginManager.swift */,
 				B3B850272B025BDD0094B65D /* TokenManager.swift */,
+				B30EB4802B03A190005C9289 /* ConversationManager.swift */,
+				B30EB4822B03A596005C9289 /* ApiUtil.swift */,
 			);
 			path = Util;
+			sourceTree = "<group>";
+		};
+		B3B850312B02AAB10094B65D /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				B312995A2B012A8C00D66906 /* GradientButton.swift */,
+			);
+			path = Components;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -298,11 +318,15 @@
 				B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */,
 				B35E27B92AFFD79A00E964A0 /* ContentView.swift in Sources */,
 				B3B8502C2B0265970094B65D /* HomeView.swift in Sources */,
+				B30EB4812B03A190005C9289 /* ConversationManager.swift in Sources */,
+				B3B8502E2B02996B0094B65D /* LoginView.swift in Sources */,
 				B36DD6962B01310800B96F5A /* RegisterView.swift in Sources */,
+				B3B850302B02AA3C0094B65D /* SearchView.swift in Sources */,
 				B35E27B72AFFD79A00E964A0 /* PropelchatApp.swift in Sources */,
 				B31299592B01211600D66906 /* GreetingView.swift in Sources */,
 				B35E27E12AFFD9C500E964A0 /* SplashScreenView.swift in Sources */,
 				B3B8502A2B02658D0094B65D /* ConversationView.swift in Sources */,
+				B30EB4832B03A596005C9289 /* ApiUtil.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

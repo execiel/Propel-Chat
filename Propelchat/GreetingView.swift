@@ -18,7 +18,7 @@ struct GreetingView: View {
                     .frame(width: 200, height: 100)
                 Text("Blazing fast messaging app")
                 Spacer()
-                NavigationLink(destination: Text("test hihi"), label: { GradientButton(text: "Login") }).padding()
+                NavigationLink(destination: LoginView(), label: { GradientButton(text: "Login") }).padding()
                 NavigationLink(destination: RegisterView(), label: { GradientButton(text: "Register") }).padding()
             }
         }

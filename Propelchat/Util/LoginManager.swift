@@ -15,7 +15,7 @@ class LoginManager {
         let loginData = RegisterData(username: username, password: password)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(address: "http://localhost:3000/api/loginUser", httpMethod: "POST", data: loginData)
+        let request = ApiUtil.createHttpRequest(endpoint: "loginUser", httpMethod: "POST", data: loginData)
         
         URLSession.shared.dataTask(with: request!) { (data, response, error) in
             if let decodedData = try? JSONDecoder().decode(LoginResponse.self, from: data!) {
@@ -28,7 +28,8 @@ class LoginManager {
                 
                 DispatchQueue.main.async {
                     if let token = decodedData.token {
-                        tokenManager.saveToken(token)
+                        tokenManager.saveTokenAndUsername(token, username)
+                        tokenManager.username = username
                         print("Saved token")
                     }
                 }
@@ -46,7 +47,7 @@ class LoginManager {
         let registerData = RegisterData(username: username, password: password)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(address: "http://nlocalhost:3000/api/registerUser", httpMethod: "POST", data: registerData)
+        let request = ApiUtil.createHttpRequest(endpoint: "registerUser", httpMethod: "POST", data: registerData)
         
         URLSession.shared.dataTask(with: request!) { (data, response, error) in
             if let decodedData = try? JSONDecoder().decode(LoginResponse.self, from: data!) {
@@ -58,7 +59,7 @@ class LoginManager {
                 
                 DispatchQueue.main.async {
                     if let token = decodedData.token {
-                        tokenManager.saveToken(token)
+                        tokenManager.saveTokenAndUsername(token, username)
                         print("Saved token")
                     }
                 }

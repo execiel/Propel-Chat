@@ -13,7 +13,7 @@ struct ContentView: View {
     
     var body: some View {
         if(loggenIn) {
-            HomeView()
+            HomeView().environmentObject(ConversationManager())
         } else {
             GreetingView()
                 .onChange(of: tokenManager.token) { token in

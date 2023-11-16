@@ -10,6 +10,8 @@ import SwiftUI
 
 
 struct HomeView: View {
+    @EnvironmentObject var conversationManager: ConversationManager
+    @EnvironmentObject var tokenManager: TokenManager
     
     var body: some View {
         NavigationView {
@@ -33,19 +35,25 @@ struct HomeView: View {
                 .background(
                     LinearGradient(gradient: Gradient(colors: [Colorscheme.hl_secondary, Colorscheme.hl_primary]), startPoint: .leading, endPoint: .trailing)
                 )
-                
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                Text("Convo 1")
-                
+                ScrollView {
+                    VStack {
+                        if(conversationManager.conversationPreviews != nil) {
+                            ForEach(conversationManager.conversationPreviews!, id: \.self) { preview in
+                                NavigationLink(
+                                    destination: ConversationView().onAppear{ conversationManager.getMessages(token: tokenManager.token!, conversationId: preview.id) }, label: {
+                                    PreviewView(preview: preview).padding(.horizontal, 15).padding(.vertical, 5)
+                                })
+                            }
+                        }
+                        else {
+                            Text("No conversations have been started")
+                        }
+                    }
+                }
                 Spacer()
-                
             }
+        }.onAppear {
+            conversationManager.getPreviews(token: tokenManager.token!)
         }
     }
     

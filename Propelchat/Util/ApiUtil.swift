@@ -8,16 +8,42 @@
 import Foundation
 
 class ApiUtil {
-    static func createHttpRequest(address: String, httpMethod: String, data: Codable) -> URLRequest? {
+    private static let ApiAdress = "http://localhost:3000/api/"
+    
+    static func fetchData<T: Decodable>(with request: URLRequest, completion: @escaping (T?) -> Void) {
+        URLSession.shared.dataTask(with: request) { (data, response, error) in
+            if let error = error {
+                print("Error: \(error.localizedDescription)")
+                completion(nil)
+                return
+            }
+
+            guard let data = data else {
+                print("No data received")
+                completion(nil)
+                return
+            }
+
+            do {
+                let decodedData = try JSONDecoder().decode(T.self, from: data)
+                completion(decodedData)
+            } catch {
+                print("Something went wrong with decoding the response: \(error)")
+                completion(nil)
+            }
+        }.resume()
+    }
+
+    static func createHttpRequest(endpoint: String, httpMethod: String, data: Codable) -> URLRequest? {
+        print(ApiAdress+endpoint)
         // Connect to url
-        guard let url = URL(string: address) else {
+        guard let url = URL(string: ApiAdress+endpoint) else {
             print("Invalid URL")
             return nil
         }
         
         // Create json data
-        let registerData = data
-        guard let jsonData = try? JSONEncoder().encode(registerData) else {
+        guard let jsonData = try? JSONEncoder().encode(data) else {
             print("Error encoding JSON data")
             return nil
         }

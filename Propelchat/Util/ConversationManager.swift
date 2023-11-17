@@ -12,6 +12,33 @@ class ConversationManager: ObservableObject {
     @Published var conversationPreviews: [ConversationPreview]?
     @Published var currentMessages: [Message]?
     
+    func addMessage(token: String, conversationId: String, messageContent: String) {
+        let data = AddMessageData(token: token, conversationId: conversationId, messageContent: messageContent)
+        
+        // Create request
+        guard let request = ApiUtil.createHttpRequest(endpoint: "addMessage", httpMethod: "PUT", data: data)
+        else {
+            print("could not create request")
+            return
+        }
+        
+        // Fetch data
+        ApiUtil.fetchData(with: request) { (decodedData: MessagesResponse?) in
+            if let decodedData = decodedData {
+                if(decodedData.status == "bad") {
+                    print("got status: 'bad', from addMessage")
+                    return
+                }
+                
+                DispatchQueue.main.async {
+                    self.currentMessages = decodedData.messages
+                }
+            } else {
+                print("Could not decode fetched data")
+            }
+        }
+    }
+    
     func getMessages(token: String, conversationId: String) {
         let data = MessagesData(token: token, conversationId: conversationId)
         
@@ -105,6 +132,12 @@ class ConversationManager: ObservableObject {
         }.resume()
     }
     
+    struct AddMessageData: Codable {
+        let token: String
+        let conversationId: String
+        let messageContent: String
+    }
+    
     struct MessagesData: Codable {
         let token: String
         let conversationId: String
@@ -124,6 +157,10 @@ class ConversationManager: ObservableObject {
         let status: String
         let conversationPreviews: [ConversationPreview]?
     }
+}
+
+struct StatusResponse: Codable {
+    let status: String
 }
 
 struct ConversationPreview: Codable, Hashable {

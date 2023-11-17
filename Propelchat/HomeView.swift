@@ -40,7 +40,7 @@ struct HomeView: View {
                         if(conversationManager.conversationPreviews != nil) {
                             ForEach(conversationManager.conversationPreviews!, id: \.self) { preview in
                                 NavigationLink(
-                                    destination: ConversationView().onAppear{ conversationManager.getMessages(token: tokenManager.token!, conversationId: preview.id) }, label: {
+                                    destination: ConversationView(withUser: preview.user, conversationId: preview.id).onAppear{ conversationManager.getMessages(token: tokenManager.token!, conversationId: preview.id) }, label: {
                                     PreviewView(preview: preview).padding(.horizontal, 15).padding(.vertical, 5)
                                 })
                             }

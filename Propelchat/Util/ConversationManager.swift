@@ -11,6 +11,7 @@ import SwiftUI
 class ConversationManager: ObservableObject {
     @Published var conversationPreviews: [ConversationPreview]?
     @Published var currentMessages: [Message]?
+    private var timer: Timer?
     
     func addMessage(token: String, conversationId: String, messageContent: String) {
         let data = AddMessageData(token: token, conversationId: conversationId, messageContent: messageContent)
@@ -39,7 +40,7 @@ class ConversationManager: ObservableObject {
         }
     }
     
-    func getMessages(token: String, conversationId: String) {
+    func fetchMessages(token: String, conversationId: String) {
         let data = MessagesData(token: token, conversationId: conversationId)
         
         // Create request
@@ -72,7 +73,7 @@ class ConversationManager: ObservableObject {
         }
     }
     
-    func getPreviews(token: String) {
+    func fetchPreviews(token: String) {
         let data = TokenData(token: token)
         
         // Create request
@@ -132,6 +133,34 @@ class ConversationManager: ObservableObject {
         }.resume()
     }
     
+    // Timer functions
+    func startFetchMessagesTimer(token: String, conversationId: String) {
+        // Fetch initially
+        self.fetchMessages(token: token, conversationId: conversationId)
+        
+        // Continue fetching every one seconds
+        timer = Timer.scheduledTimer(withTimeInterval: 1.0, repeats: true) { _ in
+            self.fetchMessages(token: token, conversationId: conversationId)
+        }
+    }
+    
+    func startFetchPreviewsTimer(token: String) {
+        // Fetch initially
+        self.fetchPreviews(token: token)
+        
+        // Continue fetching every one seconds
+        timer = Timer.scheduledTimer(withTimeInterval: 2.0, repeats: true) { _ in
+            self.fetchPreviews(token: token)
+        }
+    }
+    
+    func stopTimer() {
+        // Invalidate the timer when it's no longer needed
+        timer?.invalidate()
+        timer = nil
+    }
+    
+    // Structs
     struct AddMessageData: Codable {
         let token: String
         let conversationId: String

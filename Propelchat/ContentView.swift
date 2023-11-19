@@ -23,7 +23,7 @@ struct ContentView: View {
                 }
                 .onAppear {
                     // Set logged in to true and give tokenmanager its token if its in defaults
-                    loggenIn = tokenManager.checkToken()
+                    // loggenIn = tokenManager.checkToken()
                 }
         }
     }

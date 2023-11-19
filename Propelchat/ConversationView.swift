@@ -13,8 +13,7 @@ struct ConversationView: View {
     @EnvironmentObject var tokenManager: TokenManager
     @State private var messageText: String = ""
     
-    let withUser: String
-    let conversationId: String
+    let preview: ConversationPreview
     
     var body: some View {
         VStack {
@@ -40,10 +39,10 @@ struct ConversationView: View {
                     print(messageText)
                     conversationManager.addMessage(
                         token: tokenManager.token!,
-                        conversationId: conversationId,
+                        conversationId: preview.id,
                         messageContent: messageText
                     )
-                    conversationManager.getMessages(token: tokenManager.token!, conversationId: conversationId)
+                    conversationManager.fetchMessages(token: tokenManager.token!, conversationId: preview.id)
                     messageText = ""
                 }, label: {
                     Image("send")
@@ -54,6 +53,12 @@ struct ConversationView: View {
             }
             .padding(.bottom)
         }
-        .navigationTitle(withUser)
+        .navigationTitle(preview.user)
+        .onAppear{
+            conversationManager.startFetchMessagesTimer(token: tokenManager.token!, conversationId: preview.id)
+        }
+        .onDisappear{
+            conversationManager.stopTimer()
+        }
     }
 }

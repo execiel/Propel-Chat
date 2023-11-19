@@ -13,6 +13,7 @@
 		B30EB4872B03E229005C9289 /* MessageBubble.swift in Sources */ = {isa = PBXBuildFile; fileRef = B30EB4862B03E229005C9289 /* MessageBubble.swift */; };
 		B31299592B01211600D66906 /* GreetingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B31299582B01211600D66906 /* GreetingView.swift */; };
 		B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = B312995A2B012A8C00D66906 /* GradientButton.swift */; };
+		B319D80C2B0A633C005F27F3 /* SettingsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B319D80B2B0A633C005F27F3 /* SettingsView.swift */; };
 		B35E27B72AFFD79A00E964A0 /* PropelchatApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */; };
 		B35E27B92AFFD79A00E964A0 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = B35E27B82AFFD79A00E964A0 /* ContentView.swift */; };
 		B35E27BB2AFFD79B00E964A0 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = B35E27BA2AFFD79B00E964A0 /* Assets.xcassets */; };
@@ -55,6 +56,7 @@
 		B30EB4862B03E229005C9289 /* MessageBubble.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MessageBubble.swift; sourceTree = "<group>"; };
 		B31299582B01211600D66906 /* GreetingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GreetingView.swift; sourceTree = "<group>"; };
 		B312995A2B012A8C00D66906 /* GradientButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GradientButton.swift; sourceTree = "<group>"; };
+		B319D80B2B0A633C005F27F3 /* SettingsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SettingsView.swift; sourceTree = "<group>"; };
 		B35E27B32AFFD79A00E964A0 /* Propelchat.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Propelchat.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PropelchatApp.swift; sourceTree = "<group>"; };
 		B35E27B82AFFD79A00E964A0 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -128,6 +130,7 @@
 				B3B850242B0256420094B65D /* Util */,
 				B35E27B62AFFD79A00E964A0 /* PropelchatApp.swift */,
 				B35E27B82AFFD79A00E964A0 /* ContentView.swift */,
+				B319D80B2B0A633C005F27F3 /* SettingsView.swift */,
 				B3B8502F2B02AA3C0094B65D /* SearchView.swift */,
 				B3B850292B02658D0094B65D /* ConversationView.swift */,
 				B3B8502B2B0265970094B65D /* HomeView.swift */,
@@ -321,6 +324,7 @@
 				B35E27E32AFFDB2C00E964A0 /* Colorscheme.swift in Sources */,
 				B3B850282B025BDD0094B65D /* TokenManager.swift in Sources */,
 				B3B850262B0256630094B65D /* LoginManager.swift in Sources */,
+				B319D80C2B0A633C005F27F3 /* SettingsView.swift in Sources */,
 				B312995B2B012A8C00D66906 /* GradientButton.swift in Sources */,
 				B35E27B92AFFD79A00E964A0 /* ContentView.swift in Sources */,
 				B3B8502C2B0265970094B65D /* HomeView.swift in Sources */,

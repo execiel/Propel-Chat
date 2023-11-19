@@ -77,12 +77,15 @@ class ConversationManager: ObservableObject {
         let data = TokenData(token: token)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(endpoint: "getHome", httpMethod: "POST", data: data)
+        guard let request = ApiUtil.createHttpRequest(endpoint: "getHome", httpMethod: "POST", data: data)
+        else {
+            print("could not create request")
+            return
+        }
         
         // Send request
-        URLSession.shared.dataTask(with: request!) { (data, response, error) in
-            if let decodedData = try? JSONDecoder().decode(ConversationPreviewResponse.self, from: data!) {
-                // Send error message if user doesnt exist
+        ApiUtil.fetchData(with: request) { (decodedData: ConversationPreviewResponse?) in
+            if let decodedData = decodedData {
                 if(decodedData.status == "bad") {
                     print("Could not get previews")
                     return
@@ -94,11 +97,10 @@ class ConversationManager: ObservableObject {
                         self.conversationPreviews = conPrevs
                     }
                 }
-                
             } else {
-                print("Something went wrong with decoding the response")
+                print("Could not decode fetched data")
             }
-        }.resume()
+        }
     }
     
     // Sends request to create conversation
@@ -107,12 +109,15 @@ class ConversationManager: ObservableObject {
         let data = FindUserData(token: token, username: username)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(endpoint: "findUser", httpMethod: "POST", data: data)
+        guard let request = ApiUtil.createHttpRequest(endpoint: "findUser", httpMethod: "POST", data: data)
+        else {
+            print("Could not create request")
+            return
+        }
         
         // Send request
-        URLSession.shared.dataTask(with: request!) { (data, response, error) in
-            if let decodedData = try? JSONDecoder().decode(ConversationPreviewResponse.self, from: data!) {
-                // Send error message if user doesnt exist
+        ApiUtil.fetchData(with: request) { (decodedData: ConversationPreviewResponse?) in
+            if let decodedData = decodedData {
                 if(decodedData.status == "bad") {
                     message.wrappedValue = "Could not find any user by that name"
                     return
@@ -128,9 +133,9 @@ class ConversationManager: ObservableObject {
                 // Tell the user that conversation has been added
                 message.wrappedValue = "User has been added"
             } else {
-                print("Something went wrong with decoding the response")
+                print("Could not decode fetched data")
             }
-        }.resume()
+        }
     }
     
     // Timer functions

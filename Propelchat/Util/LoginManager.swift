@@ -15,12 +15,15 @@ class LoginManager {
         let loginData = RegisterData(username: username, password: password)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(endpoint: "loginUser", httpMethod: "POST", data: loginData)
+        guard let request = ApiUtil.createHttpRequest(endpoint: "loginUser", httpMethod: "POST", data: loginData)
+        else {
+            print("Could create request")
+            return
+        }
         
-        URLSession.shared.dataTask(with: request!) { (data, response, error) in
-            if let decodedData = try? JSONDecoder().decode(LoginResponse.self, from: data!) {
-                print(decodedData)
-                
+        // Send request and fetch data
+        ApiUtil.fetchData(with: request) { (decodedData: LoginResponse?) in
+            if let decodedData = decodedData {
                 if(decodedData.status == "bad") {
                     errorText.wrappedValue = "Something went wrong, try another username"
                     return
@@ -31,13 +34,11 @@ class LoginManager {
                         tokenManager.saveTokenAndUsername(token, username)
                     }
                 }
-                print("Registration was succesful")
-                
-                // TODO save token to token manager
+                print("Log in was succesfull")
             } else {
-                print("Something went wrong with decoding the response")
+                print("Could not decode data from api/login")
             }
-        }.resume()
+        }
     }
     
     func sendRegisterRequest(username: String, password: String, errorText: Binding<String>, tokenManager: TokenManager) {
@@ -45,11 +46,16 @@ class LoginManager {
         let registerData = RegisterData(username: username, password: password)
         
         // Create request
-        let request = ApiUtil.createHttpRequest(endpoint: "registerUser", httpMethod: "POST", data: registerData)
+        guard let request = ApiUtil.createHttpRequest(endpoint: "registerUser", httpMethod: "POST", data: registerData)
+        else {
+            print("Could not create register request")
+            return
+        }
         
-        URLSession.shared.dataTask(with: request!) { (data, response, error) in
-            if let decodedData = try? JSONDecoder().decode(LoginResponse.self, from: data!) {
-                print(decodedData)
+        
+        // Send request and fetch data
+        ApiUtil.fetchData(with: request) { (decodedData: LoginResponse?) in
+            if let decodedData = decodedData {
                 if(decodedData.status == "bad") {
                     errorText.wrappedValue = "Something went wrong, try another username"
                     return
@@ -61,12 +67,10 @@ class LoginManager {
                     }
                 }
                 print("Registration was succesful")
-                
-                // TODO save token to token manager
             } else {
-                print("Something went wrong with decoding the response")
+                print("Could not decode data from api/register")
             }
-        }.resume()
+        }
     }
     
     

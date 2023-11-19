@@ -35,6 +35,6 @@ struct SearchView: View {
             .padding()
             Spacer()
         }
-        .navigationTitle("Add for a user")
+        .navigationTitle("Add a user by username")
     }
 }

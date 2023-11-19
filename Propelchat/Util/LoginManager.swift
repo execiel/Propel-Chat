@@ -29,8 +29,6 @@ class LoginManager {
                 DispatchQueue.main.async {
                     if let token = decodedData.token {
                         tokenManager.saveTokenAndUsername(token, username)
-                        tokenManager.username = username
-                        print("Saved token")
                     }
                 }
                 print("Registration was succesful")
@@ -60,7 +58,6 @@ class LoginManager {
                 DispatchQueue.main.async {
                     if let token = decodedData.token {
                         tokenManager.saveTokenAndUsername(token, username)
-                        print("Saved token")
                     }
                 }
                 print("Registration was succesful")

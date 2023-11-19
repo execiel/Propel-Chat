@@ -27,7 +27,7 @@ struct HomeView: View {
                         Image(systemName: "magnifyingglass")
                             .foregroundColor(Colorscheme.bg_primary)
                     }).padding()
-                    NavigationLink(destination: Text("Settings"), label: {
+                    NavigationLink(destination: SettingsView(), label: {
                         Image(systemName: "gear")
                             .foregroundColor(Colorscheme.bg_primary)
                     }).padding()

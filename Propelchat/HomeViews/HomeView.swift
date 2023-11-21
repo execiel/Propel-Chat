@@ -38,7 +38,7 @@ struct HomeView: View {
                 ScrollView {
                     VStack {
                         if(conversationManager.conversationPreviews != nil) {
-                            ForEach(conversationManager.conversationPreviews!, id: \.self) { preview in
+                            ForEach(conversationManager.conversationPreviews!.reversed(), id: \.self) { preview in
                                 NavigationLink(
                                     destination: ConversationView(preview: preview), label: {
                                     PreviewView(preview: preview).padding(.horizontal, 15).padding(.vertical, 5)

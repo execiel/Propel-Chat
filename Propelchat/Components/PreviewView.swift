@@ -27,9 +27,11 @@ struct PreviewView: View {
                     .foregroundColor(Colorscheme.txt_primary)
                 Spacer()
             }
+            /*
             Text("Hejsan svejsan")
-                .font(.subheadline)
-                .foregroundColor(Colorscheme.txt_secondary)
+               .font(.subheadline)
+               .foregroundColor(Colorscheme.txt_secondary)
+            */
         }
         .padding(15)
         .background(Colorscheme.bg_primary)
